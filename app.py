@@ -32,6 +32,7 @@ def save_diary():
     extention =file.filename.split('.')[-1];
 
     today = datetime.now()
+    time = datetime.now().strftime('%Y.%m.%d')
     mytime = today.strftime('%Y-%m-%d-%H-%M-%S')
     filename = f'file - {mytime}'
 
@@ -43,6 +44,7 @@ def save_diary():
     doc = {
         'title': title_receive,
         'content': content_receive,
+        'time':time,
         'file': f'{filename}.{extention}'
     }
     db.diary.insert_one(doc)
